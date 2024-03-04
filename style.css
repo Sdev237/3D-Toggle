@@ -1,0 +1,90 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+main{
+    width: 300px;
+    padding: .2rem;
+    margin: 10rem auto;
+    border-radius: 6px;
+    background: #f1f6f6;
+}
+.button{
+    position: relative;
+    width: 120px;
+    height: 59px;
+    margin: 2rem auto;
+}
+.checkbox{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0;
+}
+.box, .background{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.box{
+    z-index: 2;
+    perspective: 110px;
+}
+.box span{
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    width: 54px;
+    height: 49px;
+    border-radius: 3px;
+   background: red;
+    transform: rotateY(-180deg);
+    transform-origin: 0% 50%;
+    transition: 0.6s ease all;
+    z-index: 1;
+}
+.background{
+    width: 100%;
+    background: #f1c1c1;
+    border-radius: 4px;
+    transition: .2s ease;
+    z-index: 1;
+}
+.background:before,
+.background:after{
+    position: absolute;
+    transition: .5s linear;
+    font-weight: bold;
+    top: 50%;
+    transform: rotateY(-50%);
+}
+.background:before{
+    content: 'Je refuse';
+    left: -70%;
+    color: #f59292;
+}
+.background:after{
+    content: "J'accepte";
+    right: -85px;
+    color: #73ec9b;
+    opacity: 0;
+}
+.checkbox:checked + .box span{
+    background: green;
+    transform: rotateY(0);
+}
+.checkbox:checked ~ .background{
+    background: #b7f7cc;
+}
+.checkbox:checked ~ .background:before{
+    opacity: 0;
+}
+.checkbox:checked ~ .background:after{
+    opacity: 1;
+}
